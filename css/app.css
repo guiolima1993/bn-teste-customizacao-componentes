@@ -1,0 +1,149 @@
+/* ----- Colors ----- */
+:root {
+  --pink-red: #e62f60;
+  --black: #000;
+  --gray-light: #707070;
+  --gray: #555;
+  --white: #fff;
+}
+
+/* ----- Global ----- */
+body, html {
+  font-family: Montserrat;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ----- Content ------ */
+.divisor {
+  display: none;
+}
+
+.beon-showcase .beon-showcase__head {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  margin: 4rem 0 2rem 0;
+}
+.beon-showcase .beon-showcase__head:before {
+  display: none;
+}
+.beon-showcase .beon-showcase__head .beon-showcase__viewmore {
+  font-size: 2rem;
+  color: var(--pink-red);
+  font-weight: 500;
+  transition: all 1s;
+  border: 1px solid var(--pink-red);
+  box-shadow: 0.5px 0.5px 1px var(--black);
+  border-radius: 3px;
+}
+.beon-showcase .beon-showcase__head .beon-showcase__viewmore:hover {
+  background-color: var(--pink-red);
+  color: var(--black);
+}
+.beon-showcase .beon-showcase__head .beon-showcase__head-inner {
+  text-align: center;
+  padding: 0 2rem;
+}
+.beon-showcase .beon-showcase__head .beon-showcase__head-inner .beon-showcase__title {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.beon-showcase .beon-showcase__item {
+  padding: 2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 1s;
+  margin: 4rem 2rem;
+}
+.beon-showcase .beon-showcase__item:hover {
+  transform: scale(1.1);
+}
+.beon-showcase .beon-showcase__item:hover .beon-showcase__item-actions {
+  opacity: 1;
+}
+.beon-showcase .beon-showcase__item-title {
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+.beon-showcase .beon-showcase__item-image img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 260px;
+  padding: 2rem 0;
+}
+.beon-showcase .beon-showcase__item-badge {
+  position: absolute;
+  top: 12rem;
+  left: 5rem;
+  padding: 3px;
+  box-shadow: 1px 1px 5px var(--black);
+}
+.beon-showcase .beon-showcase__item-badge:nth-child(2) {
+  position: absolute;
+  top: 19rem;
+  left: 5rem;
+  padding: 5px;
+  box-shadow: 1px 1px 5px var(--black);
+}
+.beon-showcase .beon-showcase__item-badge--off {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: var(--white);
+  text-shadow: 1px 1px 2px var(--black);
+  background-color: var(--pink-red);
+}
+.beon-showcase .beon-showcase__item-price, .beon-showcase .beon-showcase__item-installments {
+  color: var(--gray-light);
+}
+.beon-showcase .beon-showcase__item-price--to .beon-showcase__price, .beon-showcase .beon-showcase__item-price-box--simple .beon-showcase__price {
+  color: var(--pink-red);
+  line-height: 3rem;
+  padding: 0;
+}
+.beon-showcase .beon-showcase__item-description {
+  padding: 0;
+}
+.beon-showcase .beon-showcase__item-actions {
+  opacity: 0;
+  transition: all 1.6s;
+}
+
+.beon-slider .beon-slider__slides .beon-slider__slide {
+  padding: 0;
+}
+
+.beon-button--primary {
+  background-color: transparent;
+  border: 3px solid var(--pink-red);
+  transition: all 1s;
+}
+.beon-button--primary:hover {
+  background-color: var(--pink-red);
+  box-shadow: 1px 1px 1px var(--black);
+}
+
+.beon-button__label {
+  text-transform: lowercase;
+}
+
+.beon-slider .tns-nav button[data-nav].tns-nav-active {
+  background-color: var(--pink-red);
+}
+
+/*# sourceMappingURL=app.css.map */
