@@ -14,7 +14,7 @@ Here's a link for more info: http://getbem.com/introduction/
 - [x] Integration with sass
 - [x] Style changes
 - [x] Responsiveness with media
-- [x] Added Redme
+- [x] Added Readme
 
 
 ## 💻 Pre-requisites 
