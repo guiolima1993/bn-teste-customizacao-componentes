@@ -1,7 +1,7 @@
 /* ----- Colors ----- */
 :root {
-  --pink-red: #e62f60;
-  --black: #000;
+  --pink: #e62f60;
+  --primary: #000;
   --gray-light: #707070;
   --gray: #555;
   --white: #fff;
@@ -21,147 +21,211 @@ body, html {
 .divisor {
   display: none;
 }
-.beon-showcase .beon-showcase__head {
-  position: relative;
-  text-align: center;
-  justify-content: center;
-  margin: 4rem 0 2rem 0;
 
+.beon-showcase {
+  $self: &;
 
-  &:before {
-    display: none;
-  }
+  #{ $self } {
+    &__head {
+      text-align: center;
+      margin-top: 4rem;
+  
+      &-inner {
+        text-align: center;
+        padding: 0 2rem;
+        display: inline-block;
+        background-color: var(--white);
+        width: auto;
+      }
 
-  .beon-showcase__viewmore {
-    font-size: 2rem;
-    color: var(--pink-red);
-    font-weight: 500;
-    transition: all 1s;
-    border: 1px solid var(--pink-red);
-    box-shadow: .5px .5px 1px var(--black);
-    border-radius: 3px;
-
-    &:hover {
-      background-color: var(--pink-red);
-      color: var(--black);
+      #{ $self }__viewmore {
+        font-size: 1.2rem;
+        font-weight: 500;
+        transition: all .6s;
+        border: 2px solid var(--pink);
+        color: var(--primary);
+        border-radius: 3px;
+        text-transform: uppercase;
+    
+        &:hover {
+          background-color: var(--pink);
+          color: var(--white);
+          text-shadow: 1px 1px 2px var(--primary);
+        }
+      }
     }
-  }
-
-  .beon-showcase__head-inner {
-    text-align: center;
-    padding: 0 2rem;
-
-    .beon-showcase__title {
+  
+    &__title {
       text-transform: uppercase;
       font-weight: 500;
+      font-size: 3rem;
+      padding: 1rem 0;
+      
+      @media (max-width: 507px) {
+        line-height: 40px !important;
+        font-size: 2rem;
+      }
+    }
+  
+    &__item {
+      display: block;
+      padding: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+
+      &-title {
+        padding: 0;
+      }
+
+      &-references {
+        padding-bottom: 10px;
+      }
+
+      &-badge {
+        position: absolute;
+        top: 8rem;
+        left: 3rem;
+        padding: 3px;
+        box-shadow: 1px 1px 5px var(--primary);
+    
+        &:nth-child(2) {
+          position: absolute;
+          top: 15rem;
+          left: 3rem;
+          padding: 5px;
+          box-shadow: 1px 1px 5px var(--primary);
+        }
+    
+        &--off {
+          display: flex;
+          width: 50px;
+          height: 50px;
+          padding: 5px;
+          border-radius: 50%;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          text-align: center;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          font-weight: 500;
+          color: var(--white);
+          text-shadow: 1px 1px 2px var(--primary);
+          background-color: var(--pink);
+        }    
+      }
+
+      &-description {
+        padding: 0;
+      }
+
+      &-price {
+        line-height: 150%;
+
+        &--from {
+          display: block;
+          text-decoration: line-through;
+          color: var(--gray-light);
+          text-transform: uppercase;
+        }
+        
+        &--to {
+          display: flex;
+          color: var(--gray-light);
+          padding: 5px 0;
+          text-transform: uppercase;
+
+          #{ $self }__price {
+            color: var(--pink);
+            margin-left: 5px;
+          }
+        }
+      }
+
+      &-image {
+        overflow: hidden;
+
+        > a {
+          display: block;
+          transition: all .5s ease-out;
+          
+          &:hover,
+          &:focus {
+            transform: scale(1.2) rotate(10deg);
+          }
+        }
+      }  
+
+      &-actions {
+        opacity: 0;
+        transition: all 1.6s;
+        transform: translateY(20px);
+      }
+
+      &:hover {
+
+        #{ $self }__item-actions {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    &-price--to #{ $self }__price,
+    &-price-box--simple #{ $self }__price {
+      color: var(--pink);
+      line-height: 3rem;
+      padding: 0;
     }
   }
 }
 
-.beon-showcase .beon-showcase__item {
-  padding: 2rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 1s;
-  margin: 4rem 2rem;
+.beon-slider {
+  padding: 0 15px;
 
-  &:hover {
-    transform: scale(1.1);
+  .beon-slider__frame {
+    max-width: 100%;
+    min-width: 100%;
 
-    .beon-showcase__item-actions {
-      opacity: 1;
+    #tns1 {
+      @media (max-width: 449px) {
+        width: 800%;
+      }
+      @media (min-width: 450px) {
+        width: 400%;
+      }
+      @media (min-width: 600px) {
+        width: 266.667%;
+      }
+      @media (min-width: 900px) {
+        width: 200%;
+      }
+      @media (min-width: 1200px) {
+        width: 160%;
+      }
     }
   }
 
-  &-title {
-    font-size: 1.5rem;
-    padding: 1rem 0;
+  & .tns-nav button[data-nav].tns-nav-active {
+    background-color: var(--pink);
+    box-shadow: none;
   }
-
-  &-image {
-    img {
-      width: auto;
-      height: auto;
-      max-height: 100%;
-      max-width: 260px;
-      padding: 2rem 0;
-    }
-  }
-
-  &-badge {
-    position: absolute;
-    top: 12rem;
-    left: 5rem;
-    padding: 3px;
-    box-shadow: 1px 1px 5px var(--black);
-
-    &:nth-child(2) {
-      position: absolute;
-      top: 19rem;
-      left: 5rem;
-      padding: 5px;
-      box-shadow: 1px 1px 5px var(--black);
-    }
-
-    &--off {
-      display: flex;
-      width: 50px;
-      height: 50px;
-      padding: 5px;
-      border-radius: 50%;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      font-size: 1.5rem;
-      line-height: 2rem;
-      font-weight: 500;
-      color: var(--white);
-      text-shadow: 1px 1px 2px var(--black);
-      background-color: var(--pink-red);
-    }    
-  }
-
-  &-price,
-  &-installments {
-    color: var(--gray-light);
-  }
-
-  &-price--to .beon-showcase__price,
-  &-price-box--simple .beon-showcase__price {
-    color: var(--pink-red);
-    line-height: 3rem;
-    padding: 0;
-  }
-
-  &-description {
-    padding: 0;
-  }
-
-  &-actions {
-    opacity: 0;
-    transition: all 1.6s;
-  }
-}
-
-.beon-slider .beon-slider__slides .beon-slider__slide {
-  padding: 0;
 }
 
 .beon-button--primary {
   background-color: transparent;
-  border: 3px solid var(--pink-red);
-  transition: all 1s;
+  border: 3px solid var(--pink);
+  transition: all .6s;
 
   &:hover {
-    background-color: var(--pink-red);
-    box-shadow: 1px 1px 1px var(--black);
+    background-color: var(--pink);
+  }
+
+  span {
+    text-transform: lowercase;
   }
 }
 
-.beon-button__label {
-  text-transform: lowercase;
-}
-.beon-slider .tns-nav button[data-nav].tns-nav-active {
-  background-color: var(--pink-red);
-}
+
+
+
