@@ -1,9 +1,10 @@
 /* ----- Colors ----- */
 :root {
-  --pink: #e62f60;
+  --pink: #d82f5d;
+  --green: #70b8aa;
+  --green-light: #57f3cc;
   --primary: #000;
-  --gray-light: #707070;
-  --gray: #555;
+  --gray-light: #8d8d8d;
   --white: #fff;
 }
 
@@ -29,6 +30,10 @@ body, html {
     &__head {
       text-align: center;
       margin-top: 4rem;
+
+      &::before {
+        display: none;
+      }
   
       &-inner {
         text-align: center;
@@ -39,25 +44,13 @@ body, html {
       }
 
       #{ $self }__viewmore {
-        font-size: 1.2rem;
-        font-weight: 500;
-        transition: all .6s;
-        border: 2px solid var(--pink);
-        color: var(--primary);
-        border-radius: 3px;
-        text-transform: uppercase;
-    
-        &:hover {
-          background-color: var(--pink);
-          color: var(--white);
-          text-shadow: 1px 1px 2px var(--primary);
-        }
+        display: none;
       }
     }
   
     &__title {
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 3rem;
       padding: 1rem 0;
       
@@ -71,29 +64,40 @@ body, html {
       display: block;
       padding: 2rem;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 500;
+
+      &-details {
+        display: none;
+      }
 
       &-title {
-        padding: 0;
+        padding: 2px 0;
+        font-size: 1.5rem;
+        font-weight: 500;
+        position: fixed;
+        top: 70%;
+
+        @media (max-width: 600px) {
+          top: 75%;
+        }
+
+        @media (max-width: 350px) {
+          top: 73%;
+        }
       }
 
       &-references {
-        padding-bottom: 10px;
+        display: none;
       }
 
       &-badge {
         position: absolute;
-        top: 8rem;
-        left: 3rem;
+        top: 1rem;
+        left: 1rem;
         padding: 3px;
-        box-shadow: 1px 1px 5px var(--primary);
     
         &:nth-child(2) {
-          position: absolute;
-          top: 15rem;
-          left: 3rem;
-          padding: 5px;
-          box-shadow: 1px 1px 5px var(--primary);
+          display: none;
         }
     
         &--off {
@@ -110,34 +114,82 @@ body, html {
           line-height: 2rem;
           font-weight: 500;
           color: var(--white);
-          text-shadow: 1px 1px 2px var(--primary);
           background-color: var(--pink);
         }    
       }
 
       &-description {
         padding: 0;
+        color: var(--gray-light);
+        margin-top: 10rem;
+
+        #{ $self }__price {
+          color: var(--green);
+          margin-right: 5px;
+        }
       }
 
       &-price {
         line-height: 150%;
 
+        &-box--special {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+
+          .beon-interaction__installmentsCount {
+            font-weight: 500;
+            font-size: 1.1em
+          }
+
+          .beon-interaction__installmentPrice {
+            font-weight: 500;
+            font-size: 1.1em;
+          }
+        }
+
+        &-box--simple {
+          .beon-interaction__installmentsCount {
+            font-weight: 500;
+            font-size: 1.1em
+          }
+
+          .beon-interaction__installmentPrice {
+            font-weight: 500;
+            font-size: 1.1em;
+          }
+        }
+
         &--from {
           display: block;
           text-decoration: line-through;
           color: var(--gray-light);
-          text-transform: uppercase;
+          flex: 1 0 100%;
+          
+          .prefix {
+            text-transform: lowercase;
+          }
+
+          #{ $self }__price {
+            color: var(--gray-light);
+            font-size: 1.1em;
+          }
         }
         
         &--to {
           display: flex;
           color: var(--gray-light);
-          padding: 5px 0;
           text-transform: uppercase;
+          font-size: .8em;
+          font-weight: bolder;
+
+          .prefix {
+            display: none;
+          }
 
           #{ $self }__price {
-            color: var(--pink);
-            margin-left: 5px;
+            color: var(--green);
+            font-weight: bold;
           }
         }
       }
@@ -151,7 +203,7 @@ body, html {
           
           &:hover,
           &:focus {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.2) rotate(8deg);
           }
         }
       }  
@@ -159,23 +211,21 @@ body, html {
       &-actions {
         opacity: 0;
         transition: all 1.6s;
-        transform: translateY(20px);
+
+        @media (max-width: 900px) {
+          opacity: 1;
+        }
       }
 
       &:hover {
-
         #{ $self }__item-actions {
           opacity: 1;
-          transform: translateY(0);
         }
       }
-    }
 
-    &-price--to #{ $self }__price,
-    &-price-box--simple #{ $self }__price {
-      color: var(--pink);
-      line-height: 3rem;
-      padding: 0;
+      &-avista {
+        display: none;
+      }
     }
   }
 }
@@ -189,36 +239,39 @@ body, html {
 
     #tns1 {
       @media (max-width: 449px) {
-        width: 800%;
+        width: 1000%;
       }
       @media (min-width: 450px) {
-        width: 400%;
+        width: 800%;
       }
       @media (min-width: 600px) {
-        width: 266.667%;
+        width: 400%;
       }
       @media (min-width: 900px) {
-        width: 200%;
+        width: 266.667%;
       }
       @media (min-width: 1200px) {
-        width: 160%;
+        width: 200%;
       }
     }
   }
 
   & .tns-nav button[data-nav].tns-nav-active {
-    background-color: var(--pink);
+    border: 2px solid var(--green);
     box-shadow: none;
+    padding: 4px;
+
+    &:focus {
+      background: transparent;
+    }
   }
 }
 
 .beon-button--primary {
   background-color: transparent;
-  border: 3px solid var(--pink);
-  transition: all .6s;
-
+  
   &:hover {
-    background-color: var(--pink);
+    border: 4px solid var(--green-light);
   }
 
   span {
